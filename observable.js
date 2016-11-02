@@ -51,11 +51,34 @@ const source$ = new Rx.Observable(observer => {
   setTimeout(() => {
     observer.next('Last value');
     observer.complete();
-  }, 500);
+  }, 0);
 });
 
 source$
   // .catch(e => Rx.Observable.of(e)) // do completed on error
+  .subscribe(
+    data => {
+      console.log(data);
+    },
+    e => {
+      console.log('error', e);
+    },
+    complete => {
+      console.log('completed');
+    });
+
+
+// from promise
+
+const myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('myPromise');
+  }, 0);
+});
+
+const promiseSource$ = Rx.Observable.fromPromise(myPromise);
+
+promiseSource$
   .subscribe(
     data => {
       console.log(data);
