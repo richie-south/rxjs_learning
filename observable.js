@@ -89,3 +89,50 @@ promiseSource$
     complete => {
       console.log('completed');
     });
+
+
+// interval,
+
+const intervalSource$ = Rx.Observable.interval(200).take(5);
+
+intervalSource$
+  .subscribe(
+    data => {
+      console.log(data);
+    },
+    e => {
+      console.log('error', e);
+    },
+    complete => {
+      console.log('completed');
+    });
+
+//timer
+const timerSource$ = Rx.Observable.timer(500, 400).take(5);
+
+timerSource$
+  .subscribe(
+    data => {
+      console.log(data);
+    },
+    e => {
+      console.log('error', e);
+    },
+    complete => {
+      console.log('completed');
+    });
+// range
+
+const rangeSource$ = Rx.Observable.range(100, 20);
+
+rangeSource$
+  .subscribe(
+    data => {
+      console.log(data);
+    },
+    e => {
+      console.log('error', e);
+    },
+    complete => {
+      console.log('completed');
+    });
